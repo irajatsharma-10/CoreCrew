@@ -8,6 +8,8 @@ import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
 import EmployeeList from './components/EmployeeList';
 import axios from 'axios';
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
 
 const App = () => {
   const dispatch = useDispatch();
@@ -24,6 +26,7 @@ const App = () => {
   return (
     <Router>
       <Navbar />
+      <ToastContainer/>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={isLoggedIn ? <Navigate to="/employees" /> : <LoginPage />} />

@@ -2,22 +2,22 @@ import axios from 'axios';
 import { loginSuccess, logout } from '../slices/userSlice';
 import { toast } from 'react-toastify';
 
-const BASEURL = import.meta.env.REACT_APP_BASE_URL || 'http://localhost:5000/api'; // Define the base URL
+const BASEURL = import.meta.env.REACT_APP_BASE_URL || 'http://localhost:5000/api'; 
 
 export const login = (email, password) => async (dispatch) => {
     try {
-        // Log request data to confirm correct values
-        console.log('Login request:', { email, password });
+        // // Log request data to confirm correct values
+        // console.log('Login request:', { email, password });
 
-        const response = await axios.post(`${BASEURL}/auth/login`, { email, password }); // Use BASEURL
+        const response = await axios.post(`${BASEURL}/auth/login`, { email, password });
 
-        // Log response for debugging
-        console.log('Login response:', response.data);
+        // // Log response for debugging
+        // console.log('Login response:', response.data);
 
         const { token } = response.data;
 
         // Log token to ensure it's being generated and assigned
-        console.log('JWT Token:', token);
+        // console.log('JWT Token:', token);
 
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         localStorage.setItem('token', token);
@@ -41,12 +41,12 @@ export const signup = (userData) => async (dispatch) => {
         const response = await axios.post(`${BASEURL}/auth/signup`, userData); // Use BASEURL
 
         // Log signup response
-        console.log('Signup response:', response.data);
+        // console.log('Signup response:', response.data);
 
         const { token } = response.data;
 
         // Log token to ensure it's being assigned
-        console.log('JWT Token:', token);
+        // console.log('JWT Token:', token);
 
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         localStorage.setItem('token', token);

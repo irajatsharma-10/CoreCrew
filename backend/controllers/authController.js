@@ -7,7 +7,7 @@ exports.signup = async (req, res) => {
         const { name, email, password } = req.body;
 
         // Check if the user already exists
-        const existingUser = await User.findOne({ email });
+        const existingUser = await User.findOne({email});
         if (existingUser) {
             return res.status(400).json({ message: 'User already exists' });
         }
@@ -20,6 +20,7 @@ exports.signup = async (req, res) => {
         await user.save();
 
         // Generate JWT token
+        // send the userId into the payload in the token
         const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
         // Respond with token and success message

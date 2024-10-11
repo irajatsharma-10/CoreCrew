@@ -8,6 +8,7 @@ exports.getEmployees = async (req, res) => {
 
 exports.createEmployee = async (req, res) => {
     const { name, email, phone, salary, status, uniqueId } = req.body;
+    // fetch the userId from the req object that has been sent to the req object object as a payload 
     const userId = req.userId;
     const employee = new Employee({ name, email, phone, salary, status, uniqueId, userId });
     await employee.save();
